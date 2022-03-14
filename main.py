@@ -6,7 +6,7 @@ app = Flask(__name__)
 
 @app.route("/recieve")
 def recieve():
-  return "Recieve Router"
+  return "echo Hello, World!"
 
 @app.route("/send")
 def send():
