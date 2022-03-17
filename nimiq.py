@@ -24,7 +24,8 @@ status = True
 
 while True:
   if status:
-    bot.send_message("coinmadeni", "sadsdsa")
+    with bot:
+      bot.send_message("coinmadeni", "sadsdsa")
     status = False
     break
   try:
