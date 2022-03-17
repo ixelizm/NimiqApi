@@ -22,6 +22,7 @@ lastest = "2050137"
 status = True
 
 def t1():
+  global status
   while True:
     if status:
       bot.send_message("coinmadeni", "sadsdsa")
