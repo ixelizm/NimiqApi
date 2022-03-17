@@ -49,7 +49,7 @@ def t1():
     except:
       pass
 def t2():
-  @app.on_message(filters.command("status"))
+  @bot.on_message(filters.command("status"))
   async def test(_,m):
     await m.reply("bot aktifffffffffffff")
   idle()
