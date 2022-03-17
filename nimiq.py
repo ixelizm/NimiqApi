@@ -22,17 +22,16 @@ status = False
 
 
 async def main(bot):
-  async with bot:
-    while True:
-      try:
-        lastess = driver.find_element_by_xpath('//*[@id="blocklist"]/div[1]')
-        if str(lastess.text.split("#")[1].split(" ")[0]) != lastest:
-          if lastess.text.split("found by ")[1].split(" ")[0] == "ACEMINING":
-            ids = str(lastess.text.split("#")[1].split(" ")[0])
-            times = str(lastess.text.split(ids + " ")[1].split(" min")[0])
-            transactions = str(lastess.text.split("min ")[1].split(" transactions")[0])
-            size = str(lastess.text.split(" KB")[0].split(" ")[1])
-            msg = f"""
+  while True:
+    try:
+      lastess = driver.find_element_by_xpath('//*[@id="blocklist"]/div[1]')
+      if str(lastess.text.split("#")[1].split(" ")[0]) != lastest:
+        if lastess.text.split("found by ")[1].split(" ")[0] == "ACEMINING":
+          ids = str(lastess.text.split("#")[1].split(" ")[0])
+          times = str(lastess.text.split(ids + " ")[1].split(" min")[0])
+          transactions = str(lastess.text.split("min ")[1].split(" transactions")[0])
+          size = str(lastess.text.split(" KB")[0].split(" ")[1])
+          msg = f"""
 **Blok Bulundu!!**
   **ACEMINING.CO**
       **ID:** #{ids}
@@ -40,10 +39,10 @@ async def main(bot):
       **Transactions:** {transactions} Transaction
       **Size:** {size} KB
 """
-          bot.send_message("coinmadeni", msg)
-          lastest = lastess.text.split("#")[1].split(" ")[0]
-      except:
-        pass
+        bot.send_message("coinmadeni", msg)
+        lastest = lastess.text.split("#")[1].split(" ")[0]
+    except:
+      pass
 
 @bot.on_message(filters.command("coinmadeni"))
 async def onCommand(_,m):
