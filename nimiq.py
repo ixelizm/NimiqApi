@@ -20,24 +20,28 @@ r = driver.get(url)
 time.sleep(3)
 lastest = "2050137"
 
-status = True
-
+status = False
+msgsend = False
 while True:
   if status:
     with bot:
-      bot.send_message("coinmadeni", "sadsdsa")
+      bot.send_message("coinmadeni", "Bot Kapatıldı!!")
     status = False
-    break
-  try:
-    lastess = driver.find_element_by_xpath('//*[@id="blocklist"]/div[1]')
-    if str(lastess.text.split("#")[1].split(" ")[0]) != lastest:
-      if lastess.text.split("found by ")[1].split(" ")[0] == "ACEMINING":
-        ids = str(lastess.text.split("#")[1].split(" ")[0])
-        times = str(lastess.text.split(ids + " ")[1].split(" min")[0])
-        transactions = str(lastess.text.split("min ")[1].split(" transactions")[0])
-        size = str(lastess.text.split(" KB")[0].split(" ")[1])
-      with bot:  
-        msg = f"""
+  else:
+    try:
+      lastess = driver.find_element_by_xpath('//*[@id="blocklist"]/div[1]')
+      if str(lastess.text.split("#")[1].split(" ")[0]) != lastest:
+        if lastess.text.split("found by ")[1].split(" ")[0] == "ACEMINING":
+          ids = str(lastess.text.split("#")[1].split(" ")[0])
+          times = str(lastess.text.split(ids + " ")[1].split(" min")[0])
+          transactions = str(lastess.text.split("min ")[1].split(" transactions")[0])
+          size = str(lastess.text.split(" KB")[0].split(" ")[1])
+        with bot:
+          lastcommand = bot.iter_history("coinmadeni", limit = 1)
+          for x in lastcommand:
+            bot.send_message("coinmadeni", x.text)
+            break
+          msg = f"""
 **Blok Bulundu!!**
   **ACEMINING.CO**
       **ID:** #{ids}
@@ -45,10 +49,10 @@ while True:
       **Transactions:** {transactions} Transaction
       **Size:** {size} KB
 """
-        bot.send_message("coinmadeni", msg)
-      lastest = lastess.text.split("#")[1].split(" ")[0]
-  except:
-    pass
+          bot.send_message("coinmadeni", msg)
+        lastest = lastess.text.split("#")[1].split(" ")[0]
+    except:
+      pass
 
 if __name__ == "__main__":
   print("Bot Aktif")
