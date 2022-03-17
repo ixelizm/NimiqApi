@@ -4,6 +4,7 @@ from pyrogram import Client,filters,idle
 import time
 import os
 import asyncio
+from threading import Thread
 token = "5223306497:AAGeQqzgRnCgBb0wRA_io4_wn2ENmFQ4stk"
 
 bot = Client("Bot", 3479778, "e61d50b4ab56775b5589a079ebf86522", bot_token = token)
@@ -20,8 +21,7 @@ time.sleep(3)
 lastest = "2050137"
 status = False
 
-
-async def main(bot):
+def t1():
   while True:
     try:
       lastess = driver.find_element_by_xpath('//*[@id="blocklist"]/div[1]')
@@ -31,6 +31,7 @@ async def main(bot):
           times = str(lastess.text.split(ids + " ")[1].split(" min")[0])
           transactions = str(lastess.text.split("min ")[1].split(" transactions")[0])
           size = str(lastess.text.split(" KB")[0].split(" ")[1])
+          
           msg = f"""
 **Blok Bulundu!!**
   **ACEMINING.CO**
@@ -39,26 +40,21 @@ async def main(bot):
       **Transactions:** {transactions} Transaction
       **Size:** {size} KB
 """
-        bot.send_message("coinmadeni", msg)
-      lastest = lastess.text.split("#")[1].split(" ")[0]
+          bot.send_message("coinmadeni", msg)
+        lastest = lastess.text.split("#")[1].split(" ")[0]
     except:
       pass
-
-@bot.on_message(filters.command("coinmadeni"))
-async def onCommand(_,m):
-  global status
-  if status == False:
-    status = True
-    await _.send_message(m.chat.id, "__Bot Aktifleştirildi!!__", reply_to_message_id = m.message_id)
-  else:
-    status = False
-    await _.send_message(m.chat.id, "__Bot Pasifleştirildi!!__", reply_to_message_id = m.message_id)
+def t2():
+  @app.on_message(filters.command("status"))
+  async def test(_,m):
+    await m.reply("bot aktifffffffffffff")
+  idle()
 
 if __name__ == "__main__":
   bot.start()
   print("Bot Aktif")
-  asyncio.run(main(bot))
-  idle()
+  t = Thread(taget=t1).start()
+  ts = Thread(taget=t2).start()
     
 
 
