@@ -40,7 +40,7 @@ async def main(bot):
       **Size:** {size} KB
 """
         bot.send_message("coinmadeni", msg)
-        lastest = lastess.text.split("#")[1].split(" ")[0]
+      lastest = lastess.text.split("#")[1].split(" ")[0]
     except:
       pass
 
