@@ -19,10 +19,13 @@ driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), o
 r = driver.get(url)
 time.sleep(3)
 lastest = "2050137"
-status = False
+status = True
 
 def t1():
   while True:
+    if status:
+      bot.send_message("coinmadeni", "sadsdsa")
+      status = False
     try:
       lastess = driver.find_element_by_xpath('//*[@id="blocklist"]/div[1]')
       if str(lastess.text.split("#")[1].split(" ")[0]) != lastest:
@@ -53,8 +56,8 @@ def t2():
 if __name__ == "__main__":
   bot.start()
   print("Bot Aktif")
-  t = Thread(taget=t1).start()
-  ts = Thread(taget=t2).start()
+  t = Thread(target=t1).start()
+  ts = Thread(target=t2).start()
     
 
 
