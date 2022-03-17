@@ -2,14 +2,18 @@ from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from pyrogram import Client,filters,idle
 import time
+import os
 token = "5223306497:AAGeQqzgRnCgBb0wRA_io4_wn2ENmFQ4stk"
 
 bot = Client("Bot", 3479778, "e61d50b4ab56775b5589a079ebf86522", bot_token = token)
 
 chrome_options = Options()
 chrome_options.add_argument("--headless")
+chrome_options.binary_location = os.environ.get("GOOGLE_CHROME_BIN")
+chrome_options.add_argument("--disable-dev-shm-usage")
+chrome_options.add_argument("--no-sandbox")
 url = "https://nimiq.watch/"
-driver = webdriver.Chrome(options = chrome_options)
+driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), options = chrome_options)
 r = driver.get(url)
 time.sleep(3)
 lastest = "2050137"
