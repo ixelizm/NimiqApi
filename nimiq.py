@@ -20,6 +20,7 @@ r = driver.get(url)
 time.sleep(3)
 lastest = "2050137"
 total = 0
+stime = time.time()
 def main():
   with bot:
     bot.send_message(-1001721126047, "__Bot Aktif!!__")
@@ -43,13 +44,11 @@ def main():
 """
             bot.send_message(-1001721126047, msg)
             total += 1
+            ltime = time.time() - stime
+            if ltime == 3:
+              bot.send_message(-1001721126047, f"**1 Saatte Bulunan Blok Sayısı: {total}**")
+              stime = time.time()
           lastest = lastess.text.split("#")[1].split(" ")[0]
     except:
       pass
-def count():
-  while True:
-    with bot:
-      bot.send_message(-1001721126047, f"**1 Saatte Bulunan Blok Sayısı: {total}")
-      time.sleep(2)
-t2 = Thread(target=count()).start()
 t1 = Thread(target=main()).start()
