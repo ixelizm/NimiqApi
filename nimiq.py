@@ -40,7 +40,7 @@ while True:
       **Transactions:** {transactions} Transaction
       **Size:** {size} KB
 """
-          bot.send_message("coinmadeni", msg)
+          bot.send_message(-1001721126047, msg)
         lastest = lastess.text.split("#")[1].split(" ")[0]
   except:
     pass
