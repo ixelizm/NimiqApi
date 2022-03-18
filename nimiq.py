@@ -52,4 +52,4 @@ def count():
     with bot:
       bot.send_message(-1001721126047, f"**1 Saatte Bulunan Blok Sayısı: {total}")
       
-t1 = Thread(target=count).start()
+t1 = Thread(target=count()).start()
