@@ -19,6 +19,7 @@ driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), o
 r = driver.get(url)
 time.sleep(3)
 lastest = "2050137"
+total = 0
 
 with bot:
   bot.send_message("coinmadeni", "__Bot Aktif!!__")
@@ -41,7 +42,12 @@ while True:
       **Size:** {size} KB
 """
           bot.send_message(-1001721126047, msg)
+          total += 1
         lastest = lastess.text.split("#")[1].split(" ")[0]
   except:
     pass
-
+def count():
+  while True:
+    time.sleep(10)
+    with bot:
+      bot.send_message(-1001721126047, f"**1 Saatte Bulunan Blok Sayısı: {total}")
