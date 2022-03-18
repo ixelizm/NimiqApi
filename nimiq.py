@@ -22,7 +22,7 @@ lastest = "2050137"
 total = 0
 
 with bot:
-  bot.send_message("coinmadeni", "__Bot Aktif!!__")
+  bot.send_message(-1001721126047, "__Bot Aktif!!__")
 while True:
   try:
     lastess = driver.find_element_by_xpath('//*[@id="blocklist"]/div[1]')
