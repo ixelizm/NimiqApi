@@ -48,8 +48,8 @@ while True:
     pass
 def count():
   while True:
-    time.sleep(10)
     with bot:
       bot.send_message(-1001721126047, f"**1 Saatte Bulunan Blok Sayısı: {total}")
+      time.sleep(2)
       
 t1 = Thread(target=count()).start()
