@@ -22,6 +22,7 @@ lastest = "2050137"
 total = 0
 stime = time.time()
 def main():
+  global total,stime,lastest
   with bot:
     bot.send_message(-1001721126047, "__Bot Aktif!!__")
   while True:
