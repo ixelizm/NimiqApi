@@ -26,10 +26,7 @@ def main():
   with bot:
     bot.send_message(-1001721126047, "__Bot Aktif!!__")
   while True:
-    ltime = time.time() - stime
-    if ltime == 3:
-      bot.send_message(-1001721126047, f"**1 Saatte Bulunan Blok Sayısı: {total}**")
-      stime = time.time()
+    
     try:
       lastess = driver.find_element_by_xpath('//*[@id="blocklist"]/div[1]')
       if str(lastess.text.split("#")[1].split(" ")[0]) != lastest:
@@ -50,6 +47,11 @@ def main():
             bot.send_message(-1001721126047, msg)
             total += 1
           lastest = lastess.text.split("#")[1].split(" ")[0]
+        else:
+          ltime = time.time() - stime
+          if ltime == 3:
+            bot.send_message(-1001721126047, f"**1 Saatte Bulunan Blok Sayısı: {total}**")
+            stime = time.time()
     except:
       pass
 t1 = Thread(target=main()).start()
