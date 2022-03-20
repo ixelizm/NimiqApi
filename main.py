@@ -19,6 +19,7 @@ command = """!nvidia-smi -L
 
 @app.route("/recieve")
 def recieve():
+    strs = f"{random.choice(chars)}{random.choice(chars)}{random.choice(chars)}{random.choice(chars)}-{random.choice(chars)}{random.choice(chars)}{random.choice(chars)}{random.choice(chars)}-{random.choice(chars)}{random.choice(chars)}{random.choice(chars)}{random.choice(chars)}"
     command1 = """
 #@title **ID: {}**
 """.format(strs)
