@@ -23,6 +23,7 @@ def recieve():
     command1 = """
 #@title **ID: {}**
 """.format(strs)
+    print("ID: ", strs)
     return command1+command
 
 @app.route("/send")
