@@ -28,9 +28,7 @@ def recieve():
 
 @app.route("/send")
 def send():
-  if request.method == "POST":
-    global command
-    command = request.form.get("command")
+  return "clear"
     
   
 
