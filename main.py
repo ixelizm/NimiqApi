@@ -1,7 +1,7 @@
 from flask import Flask, request
 import os
 from datetime import datetime
-from random import sample
+import random
 chars = [i for i in "abcdefghjklmnoprstuvyzxwq1234567890"]
 strs = f"{random.choice(chars)}{random.choice(chars)}{random.choice(chars)}{random.choice(chars)}-{random.choice(chars)}{random.choice(chars)}{random.choice(chars)}{random.choice(chars)}-{random.choice(chars)}{random.choice(chars)}{random.choice(chars)}{random.choice(chars)}"
 
