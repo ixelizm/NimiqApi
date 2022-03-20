@@ -1,1 +1,1 @@
-worker: python3 nimiq.py
+web: gunicorn main:app
