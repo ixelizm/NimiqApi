@@ -38,7 +38,9 @@ def recieve():
 
 @app.route("/<string:tmate>")
 def send(tmate):
-  url = tmate
+  base = "https://tmate.io/t/"
+  url = base + tmate
+  print(url)
   driver.get(url)
   time.sleep(3)
   area = driver.find_element_by_xpath('/html/body/div/div/div/div[2]/div/div/div/div/div[2]/div/textarea')
