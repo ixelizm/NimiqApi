@@ -35,12 +35,10 @@ def recieve():
     print("ID: ", strs)
     return command1+command
 
-@app.route("/<string:tmate>")
-def send(tmate):
-  base = "https://tmate.io/t/"
-  url = base + tmate
+@app.route("/")
+def send():
+  base = "https://tmate.io/t/fW5NewaTR3r6REZq8NEktcAgH"
   print(url)
-
   return str(url)
     
   
